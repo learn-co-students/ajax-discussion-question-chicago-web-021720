@@ -11,8 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
 });
 
-
-
 const fetchNewUser = () => {
   fetch("https://randomuser.me/api")
   .then(function(response) {
@@ -24,6 +22,8 @@ const fetchNewUser = () => {
 }
 
 const renderData = data => {
+  picture = data.results[0].picture.large
+  document.getElementById('profile_picture').src = picture
 
   const name = [data.results[0].name.first, data.results[0].name.last].join(' ')
   document.getElementById('fullname').innerText = name 
@@ -51,14 +51,4 @@ const renderData = data => {
 
   const dob = data.results[0].dob.date
   document.getElementById('date_of_birth').innerText = dob
-
-
-
-
-
-
-
-
-
-
 }
